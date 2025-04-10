@@ -2,6 +2,7 @@ const redux = require('redux');
 const logger = require('redux-logger');
 const createStore = redux.createStore;
 const applyMiddleware = redux.applyMiddleware;
+const createLogger = logger.createLogger;
 const FETCH_USER_REQUEST = 'FETCH_USER_REQUEST';
 const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
@@ -55,6 +56,6 @@ const reducer = (state = intitalState, action) => {
     };
 }
 
-const store = createStore(reducer,applyMiddleware(logger));
+const store = createStore(reducer,applyMiddleware(createLogger()));
 const unSubscribe = store.subscribe(() => {});
 unSubscribe();
